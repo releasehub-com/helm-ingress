@@ -1,6 +1,6 @@
 {{- $serviceName := .Values.service.name -}}
 {{- $servicePort := .Values.service.externalPort -}}
-apiVersion: {{ ternary "extensions/v1beta1" "networking.k8s.io/v1" lt .Capabilities.KubeVersion.Minor 21 }}
+apiVersion: {{ lt (atoi .Capabilities.KubeVersion.Minor) 21 | ternary "extensions/v1beta1" "networking.k8s.io/v1" }}
 kind: Ingress
 metadata:
   name: {{ template "fullname" . }}
@@ -12,10 +12,10 @@ metadata:
   annotations:
     {{- range $key, $value := .Values.ingress.annotations }}
       {{ $key }}: {{ $value | quote }}
-    {{- end /* annotations */}}
+    {{- end }}
 spec:
   rules:
-  {{- if lt .Capabilities.KubeVersion.Minor 21 -}}
+  {{- if lt (atoi .Capabilities.KubeVersion.Minor) 21 -}}
     {{- range $host := .Values.ingress.hosts }}
     - host: {{ $host }}
       http:
@@ -24,8 +24,8 @@ spec:
             backend:
               serviceName: {{ $serviceName }}
               servicePort: {{ $servicePort }}
-    {{- end /* range */ -}}
-  {{- else /* Capabilities */ -}}
+    {{- end -}}
+  {{- else -}}
     {{- range $host := .Values.ingress.hosts }}
     - host: {{ $host }}
       http:
@@ -37,9 +37,9 @@ spec:
                 name: {{ $serviceName }}
               port:
                 number: {{ $servicePort }}
-    {{- end /* range */ -}}
-  {{- end /* Capabilities */ -}}
+    {{- end -}}
+  {{- end -}}
   {{- if .Values.ingress.tls }}
   tls:
 {{ toYaml .Values.ingress.tls | indent 4 }}
-  {{- end /* tls */ -}}
+  {{- end -}}
