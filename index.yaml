@@ -1,8 +1,26 @@
 apiVersion: v1
 entries:
   release-ingress:
+  - apiVersion: v2
+    created: "2022-08-13T08:39:05.3845873-07:00"
+    description: Nginx Ingress
+    digest: 0dfe686e8b68e2ff76a657b28fae11098dcfce4e4c4ffd1328fba934941dfdbd
+    home: https://releasehub.com
+    icon: https://avatars.githubusercontent.com/u/71455204?s=200&v=4
+    keywords:
+    - helm
+    - ingress
+    maintainers:
+    - email: hello@releasehub.com
+      name: ReleaseHub
+    name: release-ingress
+    sources:
+    - https://github.com/releasehub-com/helm-ingress
+    urls:
+    - https://raw.githubusercontent.com/releasehub-com/helm-ingress/release-ingress-3.0.0.tgz
+    version: 3.0.0
   - apiVersion: v1
-    created: "2022-08-12T14:42:17.1947258-07:00"
+    created: "2022-08-13T08:39:05.3842481-07:00"
     description: Nginx Ingress
     digest: 4eda4ecf43cf654367a694d35a5aa4cc67ea28ae2b8fb22325a6dc2f843bacff
     home: https://releasehub.com
@@ -17,6 +35,6 @@ entries:
     sources:
     - https://github.com/releasehub-com/helm-ingress
     urls:
-    - https://raw.githubusercontent.com/releasehub-com/helm-ingress/release-2.1.0/release-ingress-2.1.0.tgz
+    - https://raw.githubusercontent.com/releasehub-com/helm-ingress/release-ingress-2.1.0.tgz
     version: 2.1.0
-generated: "2022-08-12T14:42:17.1943737-07:00"
+generated: "2022-08-13T08:39:05.3838998-07:00"
