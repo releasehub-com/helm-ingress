@@ -6,9 +6,11 @@ You can either copy the contents of the helm-repo into your source control repos
 
 ```yaml
 charts:
-- name: ingress
-  repo_url: https://github.com/releasehub-com/helm-ingress.git
-  directory: helm/release-ingress
+- name: <service>-ingress
+  add: release-ingress
+  repo_url: https://raw.githubusercontent.com/releasehub-com/helm-ingress/main/
+  directory: <path in your repo to values.yaml>
+  install: release-ingress/release-ingress
   values: values.yaml
 ```
 
@@ -23,7 +25,8 @@ customers will be able to use only the new chart version.
 The example for using v1.20 is similar to the above:
 ```yaml
 charts:
-  repo_url: https://github.com/releasehub-com/helm-ingress.git#v1.20
+  version: 2.1.0
+  ...
 ```
 
 # Values File Example

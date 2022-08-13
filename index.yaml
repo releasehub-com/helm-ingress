@@ -17,7 +17,7 @@ entries:
     sources:
     - https://github.com/releasehub-com/helm-ingress
     urls:
-    - https://raw.githubusercontent.com/releasehub-com/helm-ingress/release-ingress-3.0.0.tgz
+    - https://raw.githubusercontent.com/releasehub-com/helm-ingress/main/release-ingress-3.0.0.tgz
     version: 3.0.0
   - apiVersion: v1
     created: "2022-08-13T08:39:05.3842481-07:00"
@@ -35,6 +35,6 @@ entries:
     sources:
     - https://github.com/releasehub-com/helm-ingress
     urls:
-    - https://raw.githubusercontent.com/releasehub-com/helm-ingress/release-ingress-2.1.0.tgz
+    - https://raw.githubusercontent.com/releasehub-com/helm-ingress/main/release-ingress-2.1.0.tgz
     version: 2.1.0
 generated: "2022-08-13T08:39:05.3838998-07:00"

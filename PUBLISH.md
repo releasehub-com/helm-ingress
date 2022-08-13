@@ -22,7 +22,7 @@ helm package .
 The repo index will be overwritten by default, so we use `--merge`. The URL is the GitHub `raw` link to the repository root where the `index.yaml` will be.
 
 ```bash
-helm repo index . --merge index.yaml --url https://raw.githubusercontent.com/releasehub-com/helm-ingress/
+helm repo index . --merge index.yaml --url https://raw.githubusercontent.com/releasehub-com/helm-ingress/main/
 ```
 
 ## Verify

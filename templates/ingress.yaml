@@ -35,8 +35,8 @@ spec:
             backend:
               service:
                 name: {{ $serviceName }}
-              port:
-                number: {{ $servicePort }}
+                port:
+                  number: {{ $servicePort }}
     {{- end -}}
   {{- end -}}
   {{- if .Values.ingress.tls }}
