@@ -15,17 +15,6 @@ metadata:
     {{- end }}
 spec:
   rules:
-  {{- if lt (atoi .Capabilities.KubeVersion.Minor) 21 -}}
-    {{- range $host := .Values.ingress.hosts }}
-    - host: {{ $host }}
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: {{ $serviceName }}
-              servicePort: {{ $servicePort }}
-    {{- end -}}
-  {{- else -}}
     {{- range $host := .Values.ingress.hosts }}
     - host: {{ $host }}
       http:
@@ -38,7 +27,6 @@ spec:
                 port:
                   number: {{ $servicePort }}
     {{- end -}}
-  {{- end -}}
   {{- if .Values.ingress.tls }}
   tls:
 {{ toYaml .Values.ingress.tls | indent 4 }}
