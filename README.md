@@ -25,6 +25,7 @@ customers will be able to use only the new chart version.
 The example for using v1.20 is similar to the above:
 ```yaml
 charts:
+- name: <service>-ingress
   version: 2.1.0
   ...
 ```
