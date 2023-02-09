@@ -1,6 +1,6 @@
 {{- $serviceName := .Values.service.name -}}
 {{- $servicePort := .Values.service.externalPort -}}
-apiVersion: {{ lt (atoi .Capabilities.KubeVersion.Minor) 21 | ternary "extensions/v1beta1" "networking.k8s.io/v1" }}
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ template "fullname" . }}
