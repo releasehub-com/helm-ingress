@@ -1,6 +1,8 @@
+{{- if and .Values.service .Values.ingress -}}
 {{- $serviceName := .Values.service.name -}}
 {{- $servicePort := .Values.service.externalPort -}}
-apiVersion: {{ lt (atoi .Capabilities.KubeVersion.Minor) 21 | ternary "extensions/v1beta1" "networking.k8s.io/v1" }}
+---
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ template "fullname" . }}
@@ -15,31 +17,58 @@ metadata:
     {{- end }}
 spec:
   rules:
-  {{- if lt (atoi .Capabilities.KubeVersion.Minor) 21 -}}
     {{- range $host := .Values.ingress.hosts }}
     - host: {{ $host }}
       http:
         paths:
           - path: /
-            backend:
-              serviceName: {{ $serviceName }}
-              servicePort: {{ $servicePort }}
-    {{- end -}}
-  {{- else -}}
-    {{- range $host := .Values.ingress.hosts }}
-    - host: {{ $host }}
-      http:
-        paths:
-          - path: /*
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: {{ $serviceName }}
                 port:
                   number: {{ $servicePort }}
     {{- end -}}
-  {{- end -}}
   {{- if .Values.ingress.tls }}
   tls:
 {{ toYaml .Values.ingress.tls | indent 4 }}
-  {{- end -}}
+{{ end }}
+{{ end }}
+{{- if .Values.services -}}
+{{- range $service := .Values.services -}}
+{{- $serviceName := $service.service.name -}}
+{{- $servicePort := $service.service.externalPort -}}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $.Chart.Name }}-{{ $.Release.Name }}-{{ $serviceName }}
+  labels:
+    app: {{ $serviceName }}
+    chart: {{ $.Chart.Name }}-{{ $.Chart.Version | replace "+" "_" }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+  annotations:
+    {{- range $key, $value := $service.ingress.annotations }}
+      {{ $key }}: {{ $value | quote }}
+    {{- end }}
+spec:
+  rules:
+    {{- range $host := $service.ingress.hosts }}
+    - host: {{ $host }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $serviceName }}
+                port:
+                  number: {{ $servicePort }}
+    {{- end -}}
+  {{- if $service.ingress.tls }}
+  tls:
+{{ toYaml $service.ingress.tls | indent 4 }}
+{{ end }}
+{{ end }}
+{{ end }}
