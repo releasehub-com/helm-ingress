@@ -1,6 +1,6 @@
 {{- $serviceName := .Values.service.name -}}
 {{- $servicePort := .Values.service.externalPort -}}
-apiVersion: {{ lt (atoi .Capabilities.KubeVersion.Minor) 21 | ternary "extensions/v1beta1" "networking.k8s.io/v1" }}
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ template "fullname" . }}
@@ -15,30 +15,18 @@ metadata:
     {{- end }}
 spec:
   rules:
-  {{- if lt (atoi .Capabilities.KubeVersion.Minor) 21 -}}
     {{- range $host := .Values.ingress.hosts }}
     - host: {{ $host }}
       http:
         paths:
           - path: /
-            backend:
-              serviceName: {{ $serviceName }}
-              servicePort: {{ $servicePort }}
-    {{- end -}}
-  {{- else -}}
-    {{- range $host := .Values.ingress.hosts }}
-    - host: {{ $host }}
-      http:
-        paths:
-          - path: /*
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: {{ $serviceName }}
                 port:
                   number: {{ $servicePort }}
     {{- end -}}
-  {{- end -}}
   {{- if .Values.ingress.tls }}
   tls:
 {{ toYaml .Values.ingress.tls | indent 4 }}
