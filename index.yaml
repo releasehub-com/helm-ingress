@@ -2,10 +2,10 @@ apiVersion: v1
 entries:
   release-ingress:
   - apiVersion: v2
-    created: "2023-09-19T17:11:47.325516243-07:00"
+    created: "2024-11-13T13:21:33.347712-05:00"
     description: Nginx Ingress
-    digest: 4c6a2e90cf18f04d553134d8d23fc0f3adbab7b57e7fecda1b5413bc872719cb
-    home: https://release.com
+    digest: f852194327637744abe1ec7cf045b5d2b66014e410e4d71eaf047ce9bb104576
+    home: https://releasehub.com
     icon: https://avatars.githubusercontent.com/u/71455204?s=200&v=4
     keywords:
     - helm
@@ -17,10 +17,28 @@ entries:
     sources:
     - https://github.com/releasehub-com/helm-ingress
     urls:
-    - https://raw.githubusercontent.com/releasehub-com/helm-ingress/release-4.0.0/release-ingress-4.0.0.tgz
+    - https://raw.githubusercontent.com/releasehub-com/helm-ingress/main/release-ingress-4.0.1.tgz
+    version: 4.0.1
+  - apiVersion: v2
+    created: "2024-11-13T13:21:33.346574-05:00"
+    description: Nginx Ingress
+    digest: 39b67eb64be9f88af71eb100e5b716825d1052f740ff1f89bb106e1d69a5b6fc
+    home: https://releasehub.com
+    icon: https://avatars.githubusercontent.com/u/71455204?s=200&v=4
+    keywords:
+    - helm
+    - ingress
+    maintainers:
+    - email: hello@release.com
+      name: Release
+    name: release-ingress
+    sources:
+    - https://github.com/releasehub-com/helm-ingress
+    urls:
+    - https://raw.githubusercontent.com/releasehub-com/helm-ingress/main/release-ingress-4.0.0.tgz
     version: 4.0.0
   - apiVersion: v2
-    created: "2023-09-19T17:11:47.325516243-07:00"
+    created: "2024-11-13T13:21:33.345784-05:00"
     description: Nginx Ingress
     digest: d9244a34730ae81a1defb0cc126182101986c6801a3b898ba7b9661d1faa4cbd
     home: https://releasehub.com
@@ -35,37 +53,19 @@ entries:
     sources:
     - https://github.com/releasehub-com/helm-ingress
     urls:
-    - https://raw.githubusercontent.com/releasehub-com/helm-ingress/release-3.1.0/release-ingress-3.1.0.tgz
-    version: 3.1.0
-  - apiVersion: v2
-    created: "2023-09-19T17:11:47.325213343-07:00"
-    description: Nginx Ingress
-    digest: d9244a34730ae81a1defb0cc126182101986c6801a3b898ba7b9661d1faa4cbd
-    home: https://release.com
-    icon: https://avatars.githubusercontent.com/u/71455204?s=200&v=4
-    keywords:
-    - helm
-    - ingress
-    maintainers:
-    - email: hello@release.com
-      name: ReleaseHub
-    name: release-ingress
-    sources:
-    - https://github.com/releasehub-com/helm-ingress
-    urls:
     - https://raw.githubusercontent.com/releasehub-com/helm-ingress/main/release-ingress-3.1.0.tgz
     version: 3.1.0
   - apiVersion: v2
-    created: "2023-09-19T17:11:47.324591244-07:00"
+    created: "2024-11-13T13:21:33.345088-05:00"
     description: Nginx Ingress
     digest: 0dfe686e8b68e2ff76a657b28fae11098dcfce4e4c4ffd1328fba934941dfdbd
-    home: https://release.com
+    home: https://releasehub.com
     icon: https://avatars.githubusercontent.com/u/71455204?s=200&v=4
     keywords:
     - helm
     - ingress
     maintainers:
-    - email: hello@release.com
+    - email: hello@releasehub.com
       name: ReleaseHub
     name: release-ingress
     sources:
@@ -74,16 +74,16 @@ entries:
     - https://raw.githubusercontent.com/releasehub-com/helm-ingress/main/release-ingress-3.0.0.tgz
     version: 3.0.0
   - apiVersion: v1
-    created: "2023-09-19T17:11:47.324229044-07:00"
+    created: "2024-11-13T13:21:33.344709-05:00"
     description: Nginx Ingress
     digest: 4eda4ecf43cf654367a694d35a5aa4cc67ea28ae2b8fb22325a6dc2f843bacff
-    home: https://release.com
+    home: https://releasehub.com
     icon: https://avatars.githubusercontent.com/u/71455204?s=200&v=4
     keywords:
     - helm
     - ingress
     maintainers:
-    - email: hello@release.com
+    - email: hello@releasehub.com
       name: ReleaseHub
     name: release-ingress
     sources:
@@ -91,4 +91,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/releasehub-com/helm-ingress/main/release-ingress-2.1.0.tgz
     version: 2.1.0
-generated: "2023-09-19T17:11:47.314606247-07:00"
+generated: "2024-11-13T13:21:33.344286-05:00"
